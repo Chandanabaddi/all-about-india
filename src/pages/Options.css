@@ -1,0 +1,38 @@
+.options-container {
+  min-height: 100vh;
+  background: linear-gradient(
+    to bottom,
+    #ff9933,
+    white,
+    #138808
+  );
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.options-container h1 {
+  margin-bottom: 30px;
+}
+
+.options-container button {
+  width: 260px;
+  padding: 12px;
+  margin: 10px;
+  font-size: 16px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  background-color: #222;
+  color: white;
+}
+
+.options-container button:hover {
+  background-color: #444;
+}
+
+.back-btn {
+  margin-top: 30px;
+  background-color: maroon !important;
+}
