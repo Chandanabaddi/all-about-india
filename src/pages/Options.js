@@ -1,90 +1,91 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 
 function Options() {
-
+  const { stateName } = useParams();
   const navigate = useNavigate();
 
-  return (
-    <div style={styles.container}>
+  const cardStyle = {
+    backgroundColor: "white",
+    padding: "30px",
+    borderRadius: "12px",
+    cursor: "pointer",
+    fontSize: "18px",
+    fontWeight: "bold",
+    boxShadow: "0 4px 12px rgba(0,0,0,0.2)",
+    textAlign: "center",
+  };
 
-      <button style={styles.backBtn} onClick={() => navigate("/")}>
+  return (
+    <div
+      style={{
+        minHeight: "100vh",
+        padding: "40px",
+        textAlign: "center",
+        background:
+          "linear-gradient(to bottom, #FF9933 0%, white 50%, #138808 100%)",
+      }}
+    >
+      {/* Back Button */}
+      <button
+        onClick={() => navigate(-1)}
+        style={{
+          marginBottom: "20px",
+          backgroundColor: "#000080",
+          color: "white",
+          border: "none",
+          padding: "8px 15px",
+          borderRadius: "5px",
+          cursor: "pointer",
+        }}
+      >
         ← Back
       </button>
 
-      <h1 style={styles.heading}>Explore India</h1>
+      <h1>Explore {stateName}</h1>
 
-      <div style={styles.box}>
+      <div
+        style={{
+          marginTop: "50px",
+          display: "grid",
+          gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))",
+          gap: "25px",
+        }}
+      >
+        {/* Culture */}
+        <div
+          style={cardStyle}
+          onClick={() => navigate(`/culture/${stateName}`)}
+        >
+          Culture
+        </div>
 
-        <button style={styles.btn} onClick={() => navigate("/culture")}>
-          Indian Culture
-        </button>
+        {/* Heritage */}
+        <div
+          style={cardStyle}
+          onClick={() => navigate(`/heritage/${stateName}`)}
+        >
+          Heritage Sites
+        </div>
 
-        <button style={styles.btn} onClick={() => navigate("/heritage")}>
-          Indian Heritage Sites
-        </button>
+        {/* Monuments */}
+        <div
+          style={cardStyle}
+          onClick={() => navigate(`/monuments/${stateName}`)}
+        >
+          Famous Monuments
+        </div>
 
-        <button style={styles.btn} onClick={() => navigate("/historical")}>
-          Indian Historical Places
-        </button>
-
-        <button style={styles.btn} onClick={() => navigate("/monuments")}>
-           Indian Famous Monuments
-        </button>
-
-        <button style={styles.btn} onClick={() => navigate("/virtualtour")}>
-           Virtual Tour
-        </button>
-
-        <button style={styles.btn} onClick={() => navigate("/login")}>
-           Admin Login
-        </button>
-
-        <button style={styles.btn} onClick={() => navigate("/userlogin")}>
-           User Login
-        </button>
-
+        {/* Historical */}
+        <div
+          style={cardStyle}
+          onClick={() => navigate(`/historical/${stateName}`)}
+        >
+          Historical Places
+        </div>
       </div>
-
     </div>
   );
 }
-
-const styles = {
-  container: {
-    minHeight: "100vh",
-    background: "linear-gradient(orange, white, green)",
-    display: "flex",
-    flexDirection: "column",
-    alignItems: "center",
-    justifyContent: "center"
-  },
-
-  heading: {
-    fontSize: "32px",
-    marginBottom: "30px"
-  },
-
-  box: {
-    display: "flex",
-    flexDirection: "column",
-    gap: "20px"
-  },
-
-  btn: {
-    padding: "12px 30px",
-    fontSize: "16px",
-    borderRadius: "8px",
-    border: "none",
-    cursor: "pointer"
-  },
-
-  backBtn: {
-    position: "absolute",
-    top: "20px",
-    left: "20px",
-    padding: "8px 14px"
-  }
-};
 
 export default Options;
